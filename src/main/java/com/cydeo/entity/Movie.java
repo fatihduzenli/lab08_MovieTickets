@@ -33,4 +33,19 @@ public class Movie {
             inverseJoinColumns = @JoinColumn(name = "genre_id"))
 
     private List<Genre> genres;
+
+
+    public Movie(String name, BigDecimal price,
+                 Type type, State state, LocalDate releaseDate,
+                 Integer duration, String summary, List<Genre> genres) {
+        this.name = name;
+        this.price = price;
+        this.type = type;
+        this.state = state;
+        this.releaseDate = releaseDate;
+        this.duration = duration;
+        this.summary = summary;
+        this.genres = genres;
+    }
 }
+

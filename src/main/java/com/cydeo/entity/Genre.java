@@ -17,4 +17,5 @@ public class Genre {
     @ManyToMany(mappedBy = "genres")
     private List<Movie> movie;
 
+
 }
