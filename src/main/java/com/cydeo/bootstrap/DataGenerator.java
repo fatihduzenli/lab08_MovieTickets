@@ -1,10 +1,13 @@
 package com.cydeo.bootstrap;
 
+import com.cydeo.entity.Cinema;
 import com.cydeo.entity.Genre;
 import com.cydeo.entity.Movie;
 import com.cydeo.enums.State;
 import com.cydeo.enums.Type;
+import com.cydeo.repository.CinemaRepository;
 import com.cydeo.repository.GenreRepository;
+import com.cydeo.repository.LocationRepository;
 import com.cydeo.repository.MovieRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
@@ -25,6 +28,8 @@ public class DataGenerator implements CommandLineRunner {
 
     private final MovieRepository movieRepository;
     private final GenreRepository genreRepository;
+    private final CinemaRepository cinemaRepository;
+    private final LocationRepository locationRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -39,13 +44,16 @@ public class DataGenerator implements CommandLineRunner {
                 120,
                 "Great Movie",
                 new ArrayList<>(Arrays.asList(
-                        genreRepository.findById(1L).get(),
-                        genreRepository.findById(2L).get(),
-                        genreRepository.findById(3L).get()
+                        genreRepository.getReferenceById(1L),
+                        genreRepository.getReferenceById(2L),
+                        genreRepository.getReferenceById(3L)
                 ))
         );
 
         movieRepository.save(movie);
+
+        Cinema cinema= new Cinema("Regal","Amazon",locationRepository.getReferenceById(1L));
+        cinemaRepository.save(cinema);
 
 
 

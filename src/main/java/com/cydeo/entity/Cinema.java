@@ -17,6 +17,9 @@ public class Cinema {
     @ManyToOne
     private Location location;
 
-
-
+    public Cinema(String name, String sponsoredName, Location location) {
+        this.name = name;
+        this.sponsoredName = sponsoredName;
+        this.location = location;
+    }
 }
